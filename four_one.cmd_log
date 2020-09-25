@@ -1,0 +1,12 @@
+xst -intstyle ise -ifn "F:/Xilinx/14.7/ISE_DS/mux_four_one/four_one.xst" -ofn "F:/Xilinx/14.7/ISE_DS/mux_four_one/four_one.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx9-tqg144-2 four_one.ngc four_one.ngd  
+map -intstyle ise -p xc6slx9-tqg144-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o four_one_map.ncd four_one.ngd four_one.pcf 
+par -w -intstyle ise -ol high -mt off four_one_map.ncd four_one.ncd four_one.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml four_one.twx four_one.ncd -o four_one.twr four_one.pcf 
+bitgen -intstyle ise -f four_one.ut four_one.ncd 
+xst -intstyle ise -ifn "F:/Xilinx/14.7/ISE_DS/mux_four_one/four_one.xst" -ofn "F:/Xilinx/14.7/ISE_DS/mux_four_one/four_one.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc four_one_mux.ucf -p xc6slx9-tqg144-2 four_one.ngc four_one.ngd  
+map -intstyle ise -p xc6slx9-tqg144-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o four_one_map.ncd four_one.ngd four_one.pcf 
+par -w -intstyle ise -ol high -mt off four_one_map.ncd four_one.ncd four_one.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml four_one.twx four_one.ncd -o four_one.twr four_one.pcf -ucf four_one_mux.ucf 
+bitgen -intstyle ise -f four_one.ut four_one.ncd 
